@@ -8,8 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,6 +20,10 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "T_EMPLOYE")
+
+@NamedQueries({ @NamedQuery(name = "Employe.findAll", query = "SELECT e FROM Employe e"),
+		@NamedQuery(name = "Employe.findById", query = "SELECT e FROM Employe e WHERE e.id= :idVar") })
+
 public class Employe implements Serializable {
 
 	private static final long serialVersionUID = 3025059727134698334L;
@@ -80,9 +84,11 @@ public class Employe implements Serializable {
 	/*
 	 * Département de l'employé
 	 */
-	/*@ManyToOne
-	@JoinColumn(name="employes")
-	private Departement departement;*/
+	/*
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name="employes") private Departement departement;
+	 */
 
 	public Long getId() {
 		return id;
@@ -148,12 +154,11 @@ public class Employe implements Serializable {
 		this.departure_date = departure_date;
 	}
 
-	/*public Departement getDepartement() {
-		return departement;
-	}
-
-	public void setDepartement(Departement departement) {
-		this.departement = departement;
-	}*/
+	/*
+	 * public Departement getDepartement() { return departement; }
+	 * 
+	 * public void setDepartement(Departement departement) { this.departement =
+	 * departement; }
+	 */
 
 }
