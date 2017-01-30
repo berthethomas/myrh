@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /*
@@ -45,6 +46,9 @@ public class Employe implements Serializable {
 
 	@Column(name = "departure_date")
 	private Date departure_date;
+
+	@ManyToOne
+	private Departement departement;
 
 	public Long getId() {
 		return id;
@@ -108,6 +112,14 @@ public class Employe implements Serializable {
 
 	public void setDeparture_date(Date departure_date) {
 		this.departure_date = departure_date;
+	}
+
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
 	}
 
 }
