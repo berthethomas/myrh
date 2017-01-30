@@ -5,3 +5,4 @@
 .DS_Store
 log/*
 target/*
+src/resources/META-INF/persistence.xml
