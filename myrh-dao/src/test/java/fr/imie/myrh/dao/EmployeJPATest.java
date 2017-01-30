@@ -1,6 +1,7 @@
 package fr.imie.myrh.dao;
 
 import java.util.Date;
+import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -57,6 +58,10 @@ public class EmployeJPATest {
 		
 		
 		// Test 2
+		Employe employeFind = (Employe) em.createNamedQuery("Employe.findById").setParameter("idVar", Long.parseLong("1")).getSingleResult();
+		System.out.println("REQUEST 2 : RECHERCHE EMPLOYE AVEC ID=1 \n");
+		System.out.println(employeFind.getName());
 		
+		// Test 3
 	}
 }
