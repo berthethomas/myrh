@@ -1,4 +1,4 @@
-package org.myrh.dao;
+package fr.imie.myrh.dao;
 
 /**
  * Hello world!

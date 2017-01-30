@@ -1,7 +1,7 @@
 .classpath
 .project
-.settings/*
+.settings/
 
 .DS_Store
-log/*
+log/
 target/*
