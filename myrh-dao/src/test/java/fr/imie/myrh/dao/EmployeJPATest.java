@@ -15,7 +15,7 @@ public class EmployeJPATest {
 
 	public static void main(String[] args) {
 		// Utilisation date
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 		// mise en place de l'entity manager
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("myRhPersistenceUnit");
@@ -27,6 +27,7 @@ public class EmployeJPATest {
 		trx.begin();
 		
 		//creation de l'employé
+		
 		Employe employe = new Employe();
 		employe.setName("Laura");
 		employe.setSurname("Souchu");
@@ -45,7 +46,7 @@ public class EmployeJPATest {
 			e1.printStackTrace();
 		}
 		try {
-			employe.setDeparture_date((Date) sdf.parse("02/02/2017"));
+			employe.setDeparture_date(sdf.parse("02/02/2017"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,6 +54,9 @@ public class EmployeJPATest {
 		
 		em.persist(employe);
 		trx.commit();
+		
+		
+		// Test 2
 
 	}
 }
