@@ -8,8 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /*
  * Entité de l'employé
@@ -45,6 +48,7 @@ public class Employe implements Serializable {
 	 * Date de naissance de l'employé
 	 */
 	@Column(name = "BIRTHDATE")
+	@Temporal(TemporalType.DATE)
 	private Date birthdate;
 
 	/*
@@ -63,18 +67,21 @@ public class Employe implements Serializable {
 	 * Date d'arrivé de l'employé
 	 */
 	@Column(name = "ARRIVAL_DATE")
+	@Temporal(TemporalType.DATE)
 	private Date arrival_date;
 
 	/*
 	 * Date de départ de l'employé
 	 */
 	@Column(name = "DEPARTURE_DATE")
+	@Temporal(TemporalType.DATE)
 	private Date departure_date;
 
 	/*
 	 * Département de l'employé
 	 */
 	@ManyToOne
+	@JoinColumn(name="employes")
 	private Departement departement;
 
 	public Long getId() {
