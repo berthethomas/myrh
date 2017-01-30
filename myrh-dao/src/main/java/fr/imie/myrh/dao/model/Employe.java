@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/*
+ * Entité de l'employé
+ */
+
 @Entity
 @Table(name = "employe")
 public class Employe implements Serializable {
