@@ -38,8 +38,10 @@ public class Departement implements Serializable {
 	/*
 	 * Liste des employés liés au département
 	 */
-	@OneToMany(mappedBy = "departement")
+	
+	/*@OneToMany(mappedBy = "departement")
 	private List<Employe> employes;
+	*/
 
 	public Long getId() {
 		return id;
@@ -57,12 +59,12 @@ public class Departement implements Serializable {
 		this.name = name;
 	}
 
-	public List<Employe> getEmployes() {
+	/*public List<Employe> getEmployes() {
 		return employes;
 	}
 
 	public void setEmployes(List<Employe> employes) {
 		this.employes = employes;
-	}
+	}*/
 
 }

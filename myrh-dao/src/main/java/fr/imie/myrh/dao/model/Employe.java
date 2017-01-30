@@ -1,7 +1,7 @@
 package fr.imie.myrh.dao.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -80,9 +80,9 @@ public class Employe implements Serializable {
 	/*
 	 * Département de l'employé
 	 */
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name="employes")
-	private Departement departement;
+	private Departement departement;*/
 
 	public Long getId() {
 		return id;
@@ -148,12 +148,12 @@ public class Employe implements Serializable {
 		this.departure_date = departure_date;
 	}
 
-	public Departement getDepartement() {
+	/*public Departement getDepartement() {
 		return departement;
 	}
 
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
-	}
+	}*/
 
 }
