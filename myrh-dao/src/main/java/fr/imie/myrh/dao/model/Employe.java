@@ -16,37 +16,64 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "employe")
+@Table(name = "T_EMPLOYE")
 public class Employe implements Serializable {
 
 	private static final long serialVersionUID = 3025059727134698334L;
 
+	/*
+	 * Id de l'employé
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "name")
+	/*
+	 * Nom de l'employé
+	 */
+	@Column(name = "FNAME")
 	private String name;
 
-	@Column(name = "surname")
+	/*
+	 * Prénom de l'employé
+	 */
+	@Column(name = "LNAME")
 	private String surname;
 
-	@Column(name = "birthdate")
+	/*
+	 * Date de naissance de l'employé
+	 */
+	@Column(name = "BIRTHDATE")
 	private Date birthdate;
 
-	@Column(name = "ssid")
-	private String ssid;
+	/*
+	 * Numéro de sécurité social de l'employé
+	 */
+	@Column(name = "NSS")
+	private String nss;
 
-	@Column(name = "salary")
+	/*
+	 * Salaire de l'employé
+	 */
+	@Column(name = "SALARY")
 	private Double salary;
 
-	@Column(name = "arrival_date")
+	/*
+	 * Date d'arrivé de l'employé
+	 */
+	@Column(name = "ARRIVAL_DATE")
 	private Date arrival_date;
 
-	@Column(name = "departure_date")
+	/*
+	 * Date de départ de l'employé
+	 */
+	@Column(name = "DEPARTURE_DATE")
 	private Date departure_date;
 
+	/*
+	 * Département de l'employé
+	 */
 	@ManyToOne
 	private Departement departement;
 
@@ -82,12 +109,12 @@ public class Employe implements Serializable {
 		this.birthdate = birthdate;
 	}
 
-	public String getSsid() {
-		return ssid;
+	public String getNss() {
+		return nss;
 	}
 
-	public void setSsid(String ssid) {
-		this.ssid = ssid;
+	public void setNss(String nss) {
+		this.nss = nss;
 	}
 
 	public Double getSalary() {

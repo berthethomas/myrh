@@ -21,15 +21,24 @@ public class Departement implements Serializable {
 
 	private static final long serialVersionUID = 3910098696718882951L;
 
+	/*
+	 * Id du département
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "name")
+	/*
+	 * Nom du département
+	 */
+	@Column(name = "NAME")
 	private String name;
 
-	@OneToMany(mappedBy = "employe")
+	/*
+	 * Liste des employés liés au département
+	 */
+	@OneToMany(mappedBy = "departement")
 	private List<Employe> employes;
 
 	public Long getId() {
