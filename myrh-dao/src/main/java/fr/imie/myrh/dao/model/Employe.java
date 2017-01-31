@@ -35,7 +35,7 @@ import javax.persistence.TemporalType;
 		@NamedQuery(name = "Employe.findByLessSalary", query = "SELECT e FROM Employe e WHERE e.salary <= :salary"),
 		@NamedQuery(name = "Employe.findByDepartment", query = "SELECT e FROM Employe e WHERE e.departement.code = :code"),
 		@NamedQuery(name = "Employe.findByArrivalDate", query = "SELECT e FROM Employe e WHERE e.arrival_date = :arrival_date "),
-		@NamedQuery(name = "Employe.findByDepartureDate", query = "SELECT e FROM Employe e WHERE e.departure_date = :departure_date ")})
+		@NamedQuery(name = "Employe.findByDepartureDate", query = "SELECT e FROM Employe e WHERE e.departure_date = :departure_date ") })
 
 public class Employe implements Serializable {
 
@@ -101,14 +101,19 @@ public class Employe implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "DEPARTMENT")
 	private Departement departement;
-	
-	
+
 	/*
 	 * Liste des départements où l'employé est manager
 	 */
-	
+
 	@OneToMany(mappedBy = "manager")
 	private List<Departement> listManagedDepartment;
+
+	/*
+	 * Liste des demandes de congés
+	 */
+	@OneToMany(mappedBy = "employe")
+	private List<DemandeConge> listDemandeConges;
 
 	public Long getId() {
 		return id;
@@ -189,7 +194,13 @@ public class Employe implements Serializable {
 	public void setListManagedDepartment(List<Departement> listManagedDepartment) {
 		this.listManagedDepartment = listManagedDepartment;
 	}
-	
-	
+
+	public List<DemandeConge> getListDemandeConges() {
+		return listDemandeConges;
+	}
+
+	public void setListDemandeConges(List<DemandeConge> listDemandeConges) {
+		this.listDemandeConges = listDemandeConges;
+	}
 
 }

@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -77,7 +79,14 @@ public class DemandeConge implements Serializable {
 	 * Nb de jours de la demande
 	 */
 	@Column(name = "NB_JOURS")
-	private String nb_jours;
+	private Double nb_jours;
+
+	/*
+	 * Employe qui a fait la demande de congé
+	 */
+	@ManyToOne
+	@JoinColumn(name = "EMPLOYE")
+	private Employe employe;
 
 	/*
 	 * Liste des historique de la demande de congé
@@ -133,11 +142,11 @@ public class DemandeConge implements Serializable {
 		this.statut = statut;
 	}
 
-	public String getNb_jours() {
+	public Double getNb_jours() {
 		return nb_jours;
 	}
 
-	public void setNb_jours(String nb_jours) {
+	public void setNb_jours(Double nb_jours) {
 		this.nb_jours = nb_jours;
 	}
 
@@ -147,6 +156,14 @@ public class DemandeConge implements Serializable {
 
 	public void setHistoriques(List<HistoriqueDemande> historiques) {
 		this.historiques = historiques;
+	}
+
+	public Employe getEmploye() {
+		return employe;
+	}
+
+	public void setEmploye(Employe employe) {
+		this.employe = employe;
 	}
 
 }
