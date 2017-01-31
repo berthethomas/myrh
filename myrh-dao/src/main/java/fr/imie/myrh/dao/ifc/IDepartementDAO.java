@@ -26,6 +26,23 @@ public interface IDepartementDAO {
 	 */
 	public List<Departement> findByCode(String code);
 	
+	/*
+	 * créer un département
+	 */
+	public Departement createDepartment(Departement departement);
+	
+	/*
+	 * Modifier un département
+	 */
+	public Departement updateDepartment(Departement departement);
+	
+	/*
+	 * Supprimer un département
+	 */
+	public void deleteDepartment(Departement departement);
+	
+	
+	
 	
 
 }

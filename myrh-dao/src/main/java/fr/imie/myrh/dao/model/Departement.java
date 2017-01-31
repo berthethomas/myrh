@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -21,7 +23,10 @@ import javax.persistence.Table;
 @Table(name = "T_DEPARTMENT")
 
 @NamedQueries({ @NamedQuery(name = "Departement.findAll", query = "SELECT d FROM Departement d"),
-		@NamedQuery(name = "Departement.findById", query = "SELECT d FROM Departement d WHERE d.id= :idVar") })
+				@NamedQuery(name = "Departement.findById", query = "SELECT d FROM Departement d WHERE d.id= :idVar"),
+				@NamedQuery(name = "Departement.findByName", query = "SELECT d FROM Departement d WHERE d.name= :name"),
+				@NamedQuery(name = "Departement.findByCode", query = "SELECT d FROM Departement d WHERE d.code= :code")
+				})
 public class Departement implements Serializable {
 
 	private static final long serialVersionUID = 3910098696718882951L;
@@ -41,7 +46,7 @@ public class Departement implements Serializable {
 	private String name;
 
 	/*
-	 * COde du département
+	 * Code du département
 	 */
 	@Column(name = "CODE")
 	private String code;
@@ -57,6 +62,13 @@ public class Departement implements Serializable {
 	 */
 	@OneToMany(mappedBy = "departement")
 	private List<Employe> employes;
+	
+	/*
+	 * manager du département
+	 */
+	@ManyToOne
+	@JoinColumn(name = "MANAGER")
+	private Employe manager;
 
 	public Long getId() {
 		return id;
@@ -97,5 +109,15 @@ public class Departement implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public Employe getManager() {
+		return manager;
+	}
+
+	public void setManager(Employe manager) {
+		this.manager = manager;
+	}
+	
+	
 
 }

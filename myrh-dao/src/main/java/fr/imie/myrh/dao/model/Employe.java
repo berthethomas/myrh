@@ -2,6 +2,7 @@ package fr.imie.myrh.dao.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -99,6 +101,14 @@ public class Employe implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "DEPARTMENT")
 	private Departement departement;
+	
+	
+	/*
+	 * Liste des départements où l'employé est manager
+	 */
+	
+	@OneToMany(mappedBy = "manager")
+	private List<Departement> listManagedDepartment;
 
 	public Long getId() {
 		return id;
@@ -171,5 +181,15 @@ public class Employe implements Serializable {
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
 	}
+
+	public List<Departement> getListManagedDepartment() {
+		return listManagedDepartment;
+	}
+
+	public void setListManagedDepartment(List<Departement> listManagedDepartment) {
+		this.listManagedDepartment = listManagedDepartment;
+	}
+	
+	
 
 }
