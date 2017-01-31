@@ -115,6 +115,12 @@ public class Employe implements Serializable {
 	@OneToMany(mappedBy = "employe")
 	private List<DemandeConge> listDemandeConges;
 
+	/*
+	 * liste des journées effectuées par l'employé
+	 */
+	@OneToMany(mappedBy = "employe")
+	private List<Journee> journees;
+
 	public Long getId() {
 		return id;
 	}
@@ -201,6 +207,14 @@ public class Employe implements Serializable {
 
 	public void setListDemandeConges(List<DemandeConge> listDemandeConges) {
 		this.listDemandeConges = listDemandeConges;
+	}
+
+	public List<Journee> getJournees() {
+		return journees;
+	}
+
+	public void setJournees(List<Journee> journees) {
+		this.journees = journees;
 	}
 
 }

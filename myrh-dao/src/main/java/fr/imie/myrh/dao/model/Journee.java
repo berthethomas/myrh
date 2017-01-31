@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -16,14 +18,12 @@ import javax.persistence.Table;
 @Table(name = "JOURNEE")
 
 @NamedQueries({ @NamedQuery(name = "Journee.findAll", query = "SELECT j FROM Journee j"),
-	@NamedQuery(name = "Journee.findById", query = "SELECT j FROM Journee j WHERE j.id= :idVar"),
-	@NamedQuery(name = "Journee.findByDate", query = "SELECT j FROM Journee j WHERE j.date= :date"),
-	@NamedQuery(name = "Journee.findByDuree", query = "SELECT j FROM Journee j WHERE j.duree= :duree"),
-	})
+		@NamedQuery(name = "Journee.findById", query = "SELECT j FROM Journee j WHERE j.id= :idVar"),
+		@NamedQuery(name = "Journee.findByDate", query = "SELECT j FROM Journee j WHERE j.date= :date"),
+		@NamedQuery(name = "Journee.findByDuree", query = "SELECT j FROM Journee j WHERE j.duree= :duree"), })
 
-public class Journee implements Serializable{
-	
-	
+public class Journee implements Serializable {
+
 	private static final long serialVersionUID = -7721772270759672501L;
 
 	/*
@@ -39,18 +39,32 @@ public class Journee implements Serializable{
 	 */
 	@Column(name = "DATE")
 	private Date date;
-	
+
 	/*
 	 * Durée sur le projet
 	 */
 	@Column(name = "DUREE")
 	private Double duree;
-	
+
 	/*
 	 * Commentaire sur ce temps
 	 */
 	@Column(name = "COMMENTAIRE")
 	private String commentaire;
+
+	/*
+	 * Projet lié à la journée
+	 */
+	@ManyToOne
+	@JoinColumn(name = "PROJET")
+	private Projet projet;
+
+	/*
+	 * Employé lié à la journée
+	 */
+	@ManyToOne
+	@JoinColumn(name = "EMPLOYE")
+	private Employe employe;
 
 	public Long getId() {
 		return id;
@@ -83,6 +97,21 @@ public class Journee implements Serializable{
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
 	}
-	
+
+	public Projet getProjet() {
+		return projet;
+	}
+
+	public void setProjet(Projet projet) {
+		this.projet = projet;
+	}
+
+	public Employe getEmploye() {
+		return employe;
+	}
+
+	public void setEmploye(Employe employe) {
+		this.employe = employe;
+	}
 
 }
