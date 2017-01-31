@@ -10,6 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import fr.imie.myrh.dao.model.Departement;
 import fr.imie.myrh.dao.model.Employe;
 
 public class EmployeJPATest {
@@ -52,6 +53,11 @@ public class EmployeJPATest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		Departement departement = (Departement) em.createNamedQuery("Departement.findById", Departement.class)
+				.setParameter("idVar", Long.parseLong("1")).getSingleResult();
+		
+		employe.setDepartement(departement);
 
 		em.persist(employe);
 		trx.commit();

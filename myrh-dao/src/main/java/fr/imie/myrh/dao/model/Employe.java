@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -24,7 +26,9 @@ import javax.persistence.TemporalType;
 @NamedQueries({ @NamedQuery(name = "Employe.findAll", query = "SELECT e FROM Employe e"),
 		@NamedQuery(name = "Employe.findById", query = "SELECT e FROM Employe e WHERE e.id= :idVar"),
 		@NamedQuery(name = "Employe.findByName", query = "SELECT e FROM Employe e WHERE e.name= :val"),
-		@NamedQuery(name = "Employe.findByOverSalary", query = "SELECT e FROM Employe e WHERE e.salary >= :salary")})
+		@NamedQuery(name = "Employe.findByOverSalary", query = "SELECT e FROM Employe e WHERE e.salary >= :salary"),
+		@NamedQuery(name = "Employe.findByDepartment", query = "SELECT e FROM Employe e WHERE e.departement.code = :code"),
+		@NamedQuery(name = "Employe.findByDepartmentOlder", query = "SELECT e FROM Employe e WHERE e.departement.code = :code ORDER BY e.arrival_date ASC") })
 
 public class Employe implements Serializable {
 
@@ -34,7 +38,7 @@ public class Employe implements Serializable {
 	 * Id de l'employé
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
 
@@ -86,11 +90,10 @@ public class Employe implements Serializable {
 	/*
 	 * Département de l'employé
 	 */
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name="employes") private Departement departement;
-	 */
+
+	@ManyToOne
+	@JoinColumn(name = "DEPARTMENT")
+	private Departement departement;
 
 	public Long getId() {
 		return id;
@@ -156,11 +159,12 @@ public class Employe implements Serializable {
 		this.departure_date = departure_date;
 	}
 
-	/*
-	 * public Departement getDepartement() { return departement; }
-	 * 
-	 * public void setDepartement(Departement departement) { this.departement =
-	 * departement; }
-	 */
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
 
 }
