@@ -22,7 +22,9 @@ import javax.persistence.TemporalType;
 @Table(name = "T_EMPLOYE")
 
 @NamedQueries({ @NamedQuery(name = "Employe.findAll", query = "SELECT e FROM Employe e"),
-		@NamedQuery(name = "Employe.findById", query = "SELECT e FROM Employe e WHERE e.id= :idVar") })
+		@NamedQuery(name = "Employe.findById", query = "SELECT e FROM Employe e WHERE e.id= :idVar"),
+		@NamedQuery(name = "Employe.findByName", query = "SELECT e FROM Employe e WHERE e.name= :val"),
+		@NamedQuery(name = "Employe.findByOverSalary", query = "SELECT e FROM Employe e WHERE e.salary >= :salary")})
 
 public class Employe implements Serializable {
 
