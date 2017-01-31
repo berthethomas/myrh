@@ -19,9 +19,9 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "T_HISTORIQUE_DEMANDE")
 
-@NamedQueries({ @NamedQuery(name = "DemandeConge.findAll", query = "SELECT d FROM DemandeConge d"),
-		@NamedQuery(name = "DemandeConge.findById", query = "SELECT d FROM DemandeConge d WHERE d.id= :idVar"),
-		@NamedQuery(name = "DemandeConge.findByDate", query = "SELECT d FROM DemandeConge d WHERE d.date= :val") })
+@NamedQueries({ @NamedQuery(name = "HistoriqueDemande.findAll", query = "SELECT d FROM HistoriqueDemande d"),
+		@NamedQuery(name = "HistoriqueDemande.findById", query = "SELECT d FROM HistoriqueDemande d WHERE d.id= :idVar"),
+		@NamedQuery(name = "HistoriqueDemande.findByDate", query = "SELECT d FROM HistoriqueDemande d WHERE d.date= :val") })
 
 public class HistoriqueDemande implements Serializable {
 

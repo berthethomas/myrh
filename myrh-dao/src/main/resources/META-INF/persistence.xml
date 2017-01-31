@@ -15,7 +15,7 @@
 
 			<property name="showSql" value="true" />
 			<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create" /> 
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create" />   -->
 
 		</properties>
 

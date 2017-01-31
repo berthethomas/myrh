@@ -27,8 +27,8 @@ import javax.persistence.TemporalType;
 
 @NamedQueries({ @NamedQuery(name = "Employe.findAll", query = "SELECT e FROM Employe e"),
 		@NamedQuery(name = "Employe.findById", query = "SELECT e FROM Employe e WHERE e.id= :idVar"),
-		@NamedQuery(name = "Employe.findByName", query = "SELECT e FROM Employe e WHERE e.name LIKE %:val%"),
-		@NamedQuery(name = "Employe.findBySurname", query = "SELECT e FROM Employe e WHERE e.surname LIKE %:surname%"),
+		@NamedQuery(name = "Employe.findByName", query = "SELECT e FROM Employe e WHERE e.name =:val"),
+		@NamedQuery(name = "Employe.findBySurname", query = "SELECT e FROM Employe e WHERE e.surname =:surname"),
 		@NamedQuery(name = "Employe.findByBirthdate", query = "SELECT e FROM Employe e WHERE e.birthdate= :birthdate"),
 		@NamedQuery(name = "Employe.findByNss", query = "SELECT e FROM Employe e WHERE e.nss= :nss"),
 		@NamedQuery(name = "Employe.findByUpperSalary", query = "SELECT e FROM Employe e WHERE e.salary >= :salary"),
