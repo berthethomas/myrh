@@ -25,10 +25,15 @@ import javax.persistence.TemporalType;
 
 @NamedQueries({ @NamedQuery(name = "Employe.findAll", query = "SELECT e FROM Employe e"),
 		@NamedQuery(name = "Employe.findById", query = "SELECT e FROM Employe e WHERE e.id= :idVar"),
-		@NamedQuery(name = "Employe.findByName", query = "SELECT e FROM Employe e WHERE e.name= :val"),
-		@NamedQuery(name = "Employe.findByOverSalary", query = "SELECT e FROM Employe e WHERE e.salary >= :salary"),
+		@NamedQuery(name = "Employe.findByName", query = "SELECT e FROM Employe e WHERE e.name LIKE %:val%"),
+		@NamedQuery(name = "Employe.findBySurname", query = "SELECT e FROM Employe e WHERE e.surname LIKE %:surname%"),
+		@NamedQuery(name = "Employe.findByBirthdate", query = "SELECT e FROM Employe e WHERE e.birthdate= :birthdate"),
+		@NamedQuery(name = "Employe.findByNss", query = "SELECT e FROM Employe e WHERE e.nss= :nss"),
+		@NamedQuery(name = "Employe.findByUpperSalary", query = "SELECT e FROM Employe e WHERE e.salary >= :salary"),
+		@NamedQuery(name = "Employe.findByLessSalary", query = "SELECT e FROM Employe e WHERE e.salary <= :salary"),
 		@NamedQuery(name = "Employe.findByDepartment", query = "SELECT e FROM Employe e WHERE e.departement.code = :code"),
-		@NamedQuery(name = "Employe.findByDepartmentOlder", query = "SELECT e FROM Employe e WHERE e.departement.code = :code ORDER BY e.arrival_date ASC") })
+		@NamedQuery(name = "Employe.findByArrivalDate", query = "SELECT e FROM Employe e WHERE e.arrival_date = :arrival_date "),
+		@NamedQuery(name = "Employe.findByDepartureDate", query = "SELECT e FROM Employe e WHERE e.departure_date = :departure_date ")})
 
 public class Employe implements Serializable {
 
