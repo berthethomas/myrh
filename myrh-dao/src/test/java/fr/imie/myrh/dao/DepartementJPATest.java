@@ -29,25 +29,23 @@ public class DepartementJPATest {
 		departement.setName("Comptabilité");
 		departement.setCode("CO");
 		departement.setDescription("Département de la comptabilité");
-		
+
 		em.persist(departement);
 		trx.commit();
-		
-		//Test 2 : Liste des employé du département compta
-		List<Employe> list = em.createNamedQuery("Employe.findByDepartment", Employe.class)
-				.setParameter("code", "CO")
+
+		// Test 2 : Liste des employé du département compta
+		List<Employe> list = em.createNamedQuery("Employe.findByDepartment", Employe.class).setParameter("code", "CO")
 				.getResultList();
 		System.out.println("REQUEST 2 : LISTE DES EMPLOYES DU CO \n");
 		System.out.println(list.toString());
 
-		//Test 3 : Employé le plus ancien du département finance FI
+		// Test 3 : Employé le plus ancien du département finance FI
 		List<Employe> listEmployeOld = em.createNamedQuery("Employe.findByDepartmentOlder", Employe.class)
-				.setParameter("code", "FI")
-				.getResultList();
-		
+				.setParameter("code", "FI").getResultList();
+
 		System.out.println("REQUEST 3 : EMPLOYE DU FI LE PLUS ANCIEN \n");
-		if(listEmployeOld.get(0) != null) {
-		System.out.println(listEmployeOld.get(0).getName());
+		if (listEmployeOld.get(0) != null) {
+			System.out.println(listEmployeOld.get(0).getName());
 		}
 	}
 }

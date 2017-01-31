@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @Table(name = "T_DEPARTMENT")
 
 @NamedQueries({ @NamedQuery(name = "Departement.findAll", query = "SELECT d FROM Departement d"),
-	@NamedQuery(name = "Departement.findById", query = "SELECT d FROM Departement d WHERE d.id= :idVar")})
+		@NamedQuery(name = "Departement.findById", query = "SELECT d FROM Departement d WHERE d.id= :idVar") })
 public class Departement implements Serializable {
 
 	private static final long serialVersionUID = 3910098696718882951L;
