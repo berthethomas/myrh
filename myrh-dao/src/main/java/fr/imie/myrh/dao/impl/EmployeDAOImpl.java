@@ -76,7 +76,7 @@ public class EmployeDAOImpl implements IEmployeDAO {
 	}
 
 	public List<Employe> findByDepartment(Departement departement) {
-		List<Employe> listEmployeDepartment = em.createNamedQuery("Employe.findByDepartment", Employe.class).setParameter("departement", departement.getCode()).getResultList();
+		List<Employe> listEmployeDepartment = em.createNamedQuery("Employe.findByDepartment", Employe.class).setParameter("code", departement.getCode()).getResultList();
 		return listEmployeDepartment;
 	}
 
