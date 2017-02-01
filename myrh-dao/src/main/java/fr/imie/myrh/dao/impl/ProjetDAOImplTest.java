@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fr.imie.myrh.dao.model.DemandeConge;
 import fr.imie.myrh.dao.model.Projet;
 
 public class ProjetDAOImplTest {

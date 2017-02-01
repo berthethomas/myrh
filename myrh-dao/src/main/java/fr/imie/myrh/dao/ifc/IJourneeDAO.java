@@ -30,7 +30,7 @@ public interface IJourneeDAO {
 	/*
 	 * créer une journée
 	 */
-	public Journee createJournée(Journee journee);
+	public Journee createJournee(Journee journee);
 	
 	/*
 	 * Modifier une journée

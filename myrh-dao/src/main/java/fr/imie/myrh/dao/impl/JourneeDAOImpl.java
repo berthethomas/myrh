@@ -43,7 +43,7 @@ public class JourneeDAOImpl implements IJourneeDAO{
 		return findByDuree;
 	}
 
-	public Journee createJournée(Journee journee) {
+	public Journee createJournee(Journee journee) {
 		trx.begin();
 		em.persist(journee);
 		trx.commit();
