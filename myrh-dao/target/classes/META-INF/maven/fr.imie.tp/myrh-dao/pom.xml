@@ -8,7 +8,7 @@
 		<artifactId>myrh-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<groupId>fr.imie.tp</groupId>
+	<!-- <groupId>fr.imie.tp</groupId> -->
 	<artifactId>myrh-dao</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>myrh-dao</name>

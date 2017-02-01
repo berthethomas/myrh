@@ -27,7 +27,7 @@ public class EmployeDAOImplTest {
 	@Test
 	public void testFindAll() {
 		List<Employe> list = employeDAOImpl.findAll();
-		Assert.assertEquals("Souchu", list.get(0).getName());
+		Assert.assertEquals("Thomas", list.get(0).getName());
 	}
 
 	@Test
