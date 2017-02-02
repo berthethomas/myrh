@@ -8,25 +8,40 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+<ui:include src="/WEB-INF/header.xhtml"></ui:include>
 </h:head>
 <h:body>
-
+<h1 class="text-center">Gestion des employés</h1>
+	<p:button icon="ui-icon-plus" title="Ajouter"></p:button> Ajouter un employé
 	<!-- Display Employe List -->
 	<p:dataTable var="emp" value="#{employeViewController.employeItems}">
-		<p:column headerText="Id">
-			<h:outputText value="#{emp.id}" />
-		</p:column>
-		
-		<p:column headerText="Prénom">
-			<h:outputText value="#{emp.surname}" />
-		</p:column>
-		
+
 		<p:column headerText="Nom">
 			<h:outputText value="#{emp.name}" />
 		</p:column>
-		
-		<p:column headerText="Birthdate">
-			<h:outputText value="#{emp.birthdate}" />
+
+		<p:column headerText="Prénom">
+			<h:outputText value="#{emp.surname}" />
+		</p:column>
+
+		<p:column headerText="Date d'arrivée">
+			<h:outputText value="#{emp.arrival_date}" />
+		</p:column>
+
+		<p:column headerText="Date de départ">
+			<h:outputText value="#{emp.departure_date}" />
+		</p:column>
+
+		<p:column headerText="Département">
+			<h:outputText value="#{emp.departement.name} #{emp.departement.code}" />
+		</p:column>
+
+		<p:column headerText="Options">
+
+			<p:button icon="ui-icon-pencil" title="Modifier"></p:button>
+			<p:button icon="ui-icon-trash" title="Supprimer"></p:button>
+			<p:button icon="ui-icon-calendar" title="Gestion des congés"></p:button>
+			<p:button icon="ui-icon-info" title="Informations"></p:button>
 		</p:column>
 	</p:dataTable>
 </h:body>
