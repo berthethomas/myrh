@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<ui:include src="/header.xhtml"></ui:include>
+</h:head>
+<h:body>
+<h1 class="text-center">Gestion des Départements</h1>
+	<p:button icon="ui-icon-plus" title="Ajouter" href="/departement/add.xhtml"></p:button> Ajouter un département
+	<!-- Display Departement List -->
+	<p:dataTable var="dep" value="#{departementViewController.departementItems}">
+
+		<p:column headerText="Nom">
+			<h:outputText value="#{dep.name}" />
+		</p:column>
+
+		<p:column headerText="Code">
+			<h:outputText value="#{dep.code}" />
+		</p:column>
+
+		<p:column headerText="Options">
+
+			<p:button icon="ui-icon-pencil" title="Modifier"></p:button>
+			<p:button icon="ui-icon-trash" title="Supprimer"></p:button>
+			<p:button icon="ui-icon-calendar" title="Gestion des employés"></p:button>
+		</p:column>
+	</p:dataTable>
+</h:body>
+</html>
