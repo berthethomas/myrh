@@ -8,28 +8,39 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-<ui:include src="/header.xhtml"></ui:include>
+	<ui:include src="/header.xhtml"></ui:include>
 </h:head>
 <h:body>
-<h1 class="text-center">Gestion des Départements</h1>
-	<p:button icon="ui-icon-plus" title="Ajouter" href="/departement/add.xhtml"></p:button> Ajouter un département
+	<h1 class="text-center">Gestion des Départements</h1>
+	<p:button icon="ui-icon-plus" title="Ajouter"
+		href="/departement/add.xhtml"></p:button> Ajouter un département
 	<!-- Display Departement List -->
-	<p:dataTable var="dep" value="#{departementViewController.departementItems}">
+	<h:form>
+		<p:dataTable var="dep"
+			value="#{departementViewController.departementItems}">
 
-		<p:column headerText="Nom">
-			<h:outputText value="#{dep.name}" />
-		</p:column>
+			<!-- <p:column headerText="Id">
+			<h:outputText value="#{dep.id}" />
+		</p:column>  -->
 
-		<p:column headerText="Code">
-			<h:outputText value="#{dep.code}" />
-		</p:column>
+			<p:column headerText="Nom">
+				<h:outputText value="#{dep.name}" />
+			</p:column>
 
-		<p:column headerText="Options">
+			<p:column headerText="Code">
+				<h:outputText value="#{dep.code}" />
+			</p:column>
 
-			<p:button icon="ui-icon-pencil" title="Modifier"></p:button>
-			<p:button icon="ui-icon-trash" title="Supprimer"></p:button>
-			<p:button icon="ui-icon-calendar" title="Gestion des employés"></p:button>
-		</p:column>
-	</p:dataTable>
+			<p:column headerText="Options">
+
+	
+				<p:commandButton icon="ui-icon-pencil" title="Modifier"
+					actionListener="#{departementViewController.generateFormDepartement(dep.id)}"/>
+				<p:commandButton icon="ui-icon-trash" title="Supprimer"
+					actionListener="#{departementViewController.removeDepartement(dep.id)}" />
+				<p:button icon="ui-icon-calendar" title="Gestion des employés"></p:button>
+			</p:column>
+		</p:dataTable>
+	</h:form>
 </h:body>
 </html>
