@@ -1,22 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/layout.xhtml">
+	<ui:define name="content">
 
-<h:head>
-	<ui:include src="/header.xhtml"></ui:include>
-</h:head>
-<h:body>
-	<h1 class="text-center">Gestion des Départements</h1>
-	<p:button icon="ui-icon-plus" title="Ajouter"
-		href="/departement/add.xhtml"></p:button> Ajouter un département
-	<!-- Display Departement List -->
-	<h:form>
-		<p:dataTable var="dep"
+		<div class="ui-g">
+			<div class="ui-g-12" style="text-align: center; margin-top: 20px;">
+				<h2>LISTE DES DEPARTEMENTS</h2>
+			</div>
+		</div>
+
+		<div class="ui-g" style="margin-top: 50px;">
+			<div class="ui-g-1"></div>
+			<div class="ui-g-10">
+				<!-- Display Employe List -->
+				<p:dataTable var="dep"
 			value="#{departementViewController.departementItems}">
 
 			<!-- <p:column headerText="Id">
@@ -42,9 +41,10 @@
 					actionListener="#{departementViewController.generateFormDepartement(dep.id)}" onclick="window.location.href='update.xhtml'"/>
 				<p:commandButton icon="ui-icon-trash" title="Supprimer"
 					actionListener="#{departementViewController.removeDepartement(dep.id)}"/>
-				<p:button icon="ui-icon-calendar" title="Gestion des employés"></p:button>
 			</p:column>
 		</p:dataTable>
-	</h:form>
-</h:body>
-</html>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>

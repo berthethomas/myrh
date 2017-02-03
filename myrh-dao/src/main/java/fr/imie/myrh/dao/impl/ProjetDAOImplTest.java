@@ -30,7 +30,7 @@ public class ProjetDAOImplTest {
 
 	@Test
 	public void testFindById() {
-		Projet var = projetDAOImpl.findById(Long.parseLong("1"));
+		Projet var = projetDAOImpl.findById(Long.parseLong("2"));
 		Assert.assertEquals("test", var.getDescription());
 	}
 

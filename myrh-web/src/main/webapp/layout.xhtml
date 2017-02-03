@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<div id="header" class="header">
+		<ui:insert name="header">
+			<h:form>
+				<p:growl id="messages" />
+
+				<p:menubar>
+					<p:menuitem value="HOME" url="/" icon="ui-icon-home" />
+
+					<p:submenu label="EMPLOYE" icon="ui-icon-pencil">
+						<p:menuitem value="LISTE" url="/employe/index.xhtml"
+							icon="ui-icon-arrowreturnthick-1-w" />
+						<p:menuitem value="NOUVEAU" url="/employe/add.xhtml"
+							icon="ui-icon-arrowreturnthick-1-e" />
+					</p:submenu>
+
+					<p:submenu label="DEPARTEMENT" icon="ui-icon-pencil">
+						<p:menuitem value="LISTE"
+							url="/departement/index.xhtml"
+							icon="ui-icon-arrowreturnthick-1-w" />
+						<p:menuitem value="NOUVEAU"
+							url="/departement/add.xhtml"
+							icon="ui-icon-arrowreturnthick-1-e" />
+					</p:submenu>
+
+					<p:submenu label="PROJET" icon="ui-icon-pencil">
+						<p:menuitem value="LISTE" url="/projet/index.xhtml"
+							icon="ui-icon-arrowreturnthick-1-w" />
+						<p:menuitem value="NOUVEAU" url="/projet/add.xhtml"
+							icon="ui-icon-arrowreturnthick-1-e" />
+					</p:submenu>
+
+
+					<f:facet name="options">
+						<p:inputText style="margin-right:10px" placeholder="Search" />
+						<p:commandButton type="button" value="DECONNEXION"
+							icon="ui-icon-extlink" />
+					</f:facet>
+				</p:menubar>
+			</h:form>
+		</ui:insert>
+	</div>
+</h:head>
+<h:body>
+
+	<div id="content" class="content">
+		<ui:insert name="content">content</ui:insert>
+	</div>
+
+</h:body>
+</html>

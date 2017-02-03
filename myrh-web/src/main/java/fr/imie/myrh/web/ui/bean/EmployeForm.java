@@ -1,19 +1,24 @@
 package fr.imie.myrh.web.ui.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import fr.imie.myrh.dao.ifc.IDepartementDAO;
 import fr.imie.myrh.dao.impl.DepartementDAOImpl;
 import fr.imie.myrh.dao.model.Departement;
 
 @ManagedBean(name = "employe")
-public class EmployeForm {
-	
+@SessionScoped
+public class EmployeForm implements Serializable {
+
+	private static final long serialVersionUID = -4010575618358934284L;
+
 	private final IDepartementDAO _departementDaoService = new DepartementDAOImpl();
-	
+
 	private String name;
 	private String surname;
 	private Date birthdate;
@@ -23,7 +28,7 @@ public class EmployeForm {
 	private Double salary;
 	private Departement departement;
 	private List<Departement> departements;
-	
+
 	public EmployeForm() {
 		departements = _departementDaoService.findAll();
 	}

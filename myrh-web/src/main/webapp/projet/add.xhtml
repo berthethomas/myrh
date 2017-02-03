@@ -7,7 +7,7 @@
 
 		<div class="ui-g">
 			<div class="ui-g-12" style="text-align: center; margin-top: 20px;">
-				<h2>MODIFIER UN DEPARTEMENT</h2>
+				<h2>AJOUTER UN PROJET</h2>
 			</div>
 		</div>
 
@@ -15,30 +15,31 @@
 			<div class="ui-g-1"></div>
 			<div class="ui-g-10 center center-block">
 				<h:form id="form">
-
 					<h:panelGrid columns="2">
-						<p:outputLabel for="name" value="Nom du département:" />
-						<p:inputText id="name"
-							value="#{departementViewController.departementform.name}"
+						<p:outputLabel for="code" value="Code du projet :" />
+						<p:inputText id="code" value="#{projet.code}" required="true">
+						</p:inputText>
+
+						<p:outputLabel for="date_debut" value="Date de début :" />
+						<p:inputText id="date_debut" value="#{projet.date_debut}"
+							required="true">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:inputText>
+
+						<p:outputLabel for="date_fin" value="Date de fin :" />
+						<p:inputText id="date_fin" value="#{projet.date_fin}"
+							required="true">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:inputText>
+
+						<p:outputLabel for="description" value="Description du projet :" />
+						<p:inputText id="description" value="#{projet.description}"
 							required="true">
 						</p:inputText>
 
-						<p:outputLabel for="code" value="Code du département:" />
-						<p:inputText id="code"
-							value="#{departementViewController.departementform.code}"
-							required="true">
-						</p:inputText>
-
-						<p:outputLabel for="description"
-							value="Description du département:" />
-						<p:inputText id="description"
-							value="#{departementViewController.departementform.description}"
-							required="true">
-						</p:inputText>
 
 						<p:commandButton value="Valider" id="submit"
-							actionListener="#{departementViewController.updateDepartement(departementViewController.departementform)}"
-							onclick="window.location.href='index.xhtml'" />
+							actionListener="#{projetViewController.addProjet()}" />
 
 					</h:panelGrid>
 

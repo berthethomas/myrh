@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/layout.xhtml">
+	<ui:define name="content">
+
+		<div class="ui-g">
+			<div class="ui-g-12" style="text-align: center; margin-top: 20px;">
+				<h2>LISTE DES PROJETS</h2>
+			</div>
+		</div>
+
+		<div class="ui-g" style="margin-top: 50px;">
+			<div class="ui-g-1"></div>
+			<div class="ui-g-10">
+				<!-- Display Employe List -->
+				<p:dataTable var="proj" value="#{projetViewController.projetItems}">
+
+					<!-- <p:column headerText="Id">
+			<h:outputText value="#{dep.id}" />
+		</p:column>  -->
+
+					<p:column headerText="Code">
+						<h:outputText value="#{proj.code}" />
+					</p:column>
+
+					<p:column headerText="Date de début">
+						<h:outputText value="#{proj.date_debut}"> <f:convertDateTime pattern="dd/MM/yyyy" /> </h:outputText>
+					</p:column>
+
+					<p:column headerText="Date de fin">
+						<h:outputText value="#{proj.date_fin}"> <f:convertDateTime pattern="dd/MM/yyyy" /> </h:outputText>
+					</p:column>
+
+					<p:column headerText="Description">
+						<h:outputText value="#{proj.description}" />
+					</p:column>
+
+					<p:column headerText="Options">
+
+
+						<p:commandButton icon="ui-icon-pencil" title="Modifier"
+							actionListener="#{projetViewController.generateFormProjet(proj.id)}" onclick="window.location.href='update.xhtml'" />
+						<p:commandButton icon="ui-icon-trash" title="Supprimer"
+							actionListener="#{projetViewController.removeProjet(proj.id)}" />
+					</p:column>
+				</p:dataTable>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>

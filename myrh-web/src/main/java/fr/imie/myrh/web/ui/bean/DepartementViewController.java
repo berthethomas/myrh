@@ -34,7 +34,7 @@ public class DepartementViewController implements Serializable {
 
 	@ManagedProperty(value = "#{departement}")
 	private DepartementForm departementform;
-	
+
 	public DepartementForm getDepartementform() {
 		return departementform;
 	}
@@ -45,9 +45,9 @@ public class DepartementViewController implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		//log.log(Level.INFO, "hello");
+		// log.log(Level.INFO, "hello");
 		departementItems = (List<Departement>) _departementDaoService.findAll();
-		 
+
 	}
 
 	public List<Departement> getDepartementItems() {
@@ -57,56 +57,58 @@ public class DepartementViewController implements Serializable {
 	public void setDepartementItems(List<Departement> departementItems) {
 		this.departementItems = departementItems;
 	}
-	
-	public String addDepartement(){
-		
+
+	public String addDepartement() {
+
 		Departement model = new Departement();
 		model.setName(departementform.getName());
 		model.setCode(departementform.getCode());
 		model.setDescription(departementform.getDescription());
-		
-		 _departementDaoService.createDepartment(model);
-			 
-		 return "success";		
+
+		_departementDaoService.createDepartment(model);
+
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+
+		return "success";
 	}
-	
-	public void removeDepartement(Long id){
-		
-		//System.out.println(id);
-		log.log(Level.INFO, "hello "+id);
+
+	public void removeDepartement(Long id) {
+
+		// System.out.println(id);
+		log.log(Level.INFO, "hello " + id);
 		departement = _departementDaoService.findById(id);
-		log.log(Level.INFO, "hello "+departement.getName());
+		log.log(Level.INFO, "hello " + departement.getName());
 		_departementDaoService.deleteDepartment(departement);
 		departement = _departementDaoService.findById(id);
-		log.log(Level.INFO, "hello3 "+departement.getName());
-			
+		log.log(Level.INFO, "hello3 " + departement.getName());
+		
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+
 	}
-	
-public void generateFormDepartement(Long id){
-		
+
+	public void generateFormDepartement(Long id) {
+
 		departement = _departementDaoService.findById(id);
-		
+
 		departementform.setId(id);
 		departementform.setName(departement.getName());
 		departementform.setCode(departement.getCode());
 		departementform.setDescription(departement.getDescription());
-		
+
 	}
 
-public String updateDepartement(DepartementForm departementForm){
-	
-	departement = _departementDaoService.findById(departementForm.getId());
-	
-	departement.setName(departementform.getName());
-	departement.setCode(departementform.getCode());
-	departement.setDescription(departementform.getDescription());
-	
-	 _departementDaoService.updateDepartment(departement);
-	 //FacesContext.getCurrentInstance().getViewRoot().getViewMap().remove(departementForm);
-	 
-	 return "success";		
-}
-	
-	
-	 
+	public String updateDepartement(DepartementForm departementForm) {
+
+		departement = _departementDaoService.findById(departementForm.getId());
+
+		departement.setName(departementform.getName());
+		departement.setCode(departementform.getCode());
+		departement.setDescription(departementform.getDescription());
+
+		_departementDaoService.updateDepartment(departement);
+		// FacesContext.getCurrentInstance().getViewRoot().getViewMap().remove(departementForm);
+
+		return "success";
+	}
+
 }

@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/layout.xhtml">
+	<ui:define name="content">
+
+		<div class="ui-g">
+			<div class="ui-g-12" style="text-align: center; margin-top: 20px;">
+				<h2>LISTE DES EMPLOYES</h2>
+			</div>
+		</div>
+
+		<div class="ui-g" style="margin-top: 50px;">
+			<div class="ui-g-1"></div>
+			<div class="ui-g-10">
+				<!-- Display Employe List -->
+				<p:dataTable var="emp" value="#{employeViewController.employeItems}">
+					<p:column headerText="Id">
+						<h:outputText value="#{emp.id}" />
+					</p:column>
+
+					<p:column headerText="Prénom">
+						<h:outputText value="#{emp.surname}" />
+					</p:column>
+
+					<p:column headerText="Nom">
+						<h:outputText value="#{emp.name}" />
+					</p:column>
+
+					<p:column headerText="Date naissance">
+						<h:outputText value="#{emp.birthdate}" />
+					</p:column>
+					<p:column headerText="Salaire">
+						<h:outputText value="#{emp.salary}" />
+					</p:column>
+					<p:column headerText="N° Securité social">
+						<h:outputText value="#{emp.nss}" />
+					</p:column>
+
+					<p:column>
+						<p:button outcome="/employe/update.xhtml"
+							actionListener="#{employeViewController.selectEmploye(emp)}"
+							icon="ui-icon-edit">
+						</p:button>
+					</p:column>
+				</p:dataTable>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>
