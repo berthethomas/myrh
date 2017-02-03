@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import fr.imie.myrh.dao.ifc.IProjetDAO;
 import fr.imie.myrh.dao.impl.ProjetDAOImpl;
@@ -62,6 +63,8 @@ public class ProjetViewController implements Serializable {
 		model.setDescription(projetform.getDescription());
 
 		_projetDaoService.createProjet(model);
+		
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
 		return "success";
 	}
@@ -78,6 +81,7 @@ public class ProjetViewController implements Serializable {
 
 		projet = _projetDaoService.findById(id);
 		log.log(Level.INFO, "hello3 " + projet.getCode());
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
 	}
 
