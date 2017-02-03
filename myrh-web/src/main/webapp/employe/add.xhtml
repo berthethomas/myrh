@@ -66,11 +66,11 @@
 				<div class="ui-g-7" style="text-align: left">
 					<p:selectOneMenu id="departement"
 						value="#{employeViewController.employe.departement}" effect="fade"
-						style="width:125px" converter="departementConverter">
+						style="width:125px">
 						<f:selectItem itemLabel="Choisir département" itemValue="" />
 						<f:selectItems
 							value="#{departementViewController.departementItems}" var="dep"
-							itemValue="#{dep}" itemLabel="#{dep.code}" />
+							itemValue="#{dep.id}" itemLabel="#{dep.code}" />
 					</p:selectOneMenu>
 				</div>
 			</div>

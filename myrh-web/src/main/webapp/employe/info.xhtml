@@ -7,7 +7,7 @@
 
 		<div class="ui-g">
 			<div class="ui-g-12" style="text-align: center; margin-top: 20px;">
-				<h2>LISTE DES EMPLOYES</h2>
+				<h2>INFORMATIONS SUR L'EMPLOYE</h2>
 			</div>
 		</div>
 
@@ -15,11 +15,6 @@
 			<div class="ui-g-1"></div>
 			<div class="ui-g-10">
 				<!-- Display Employe List -->
-				<p:dataTable var="emp" value="#{employeViewController.employeItems}">
-					<p:column headerText="Id">
-						<h:outputText value="#{emp.id}" />
-					</p:column>
-
 					<p:column headerText="Prénom">
 						<h:outputText value="#{emp.surname}" />
 					</p:column>
@@ -31,19 +26,21 @@
 					<p:column headerText="Date naissance">
 						<h:outputText value="#{emp.birthdate}" />
 					</p:column>
+					
+					<p:column headerText="Date d'arrivée">
+						<h:outputText value="#{emp.arrival_date}" />
+					</p:column>
+					
+					<p:column headerText="Date de départ">
+						<h:outputText value="#{emp.departure_date}" />
+					</p:column>
 					<p:column headerText="Salaire">
 						<h:outputText value="#{emp.salary}" />
 					</p:column>
+					
 					<p:column headerText="N° Securité social">
 						<h:outputText value="#{emp.nss}" />
 					</p:column>
-
-					<p:column>
-						<p:commandButton icon="ui-icon-pencil" title="Modifier" />
-						<p:commandButton icon="ui-icon-trash" title="Supprimer" />
-						<p:commandButton icon="ui-icon-contact" title="Infos" />
-					</p:column>
-				</p:dataTable>
 			</div>
 		</div>
 

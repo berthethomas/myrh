@@ -35,7 +35,7 @@ public class DepartementConverter implements Converter {
 
 	public String getAsString(FacesContext fc, UIComponent uic, Object object) {
 		if (object != null) {
-			return ((Departement) object).getId().toString();
+			return String.valueOf(((Departement) object).getId());
 		} else {
 			return null;
 		}
