@@ -7,9 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
@@ -18,7 +18,7 @@ import fr.imie.myrh.dao.impl.DepartementDAOImpl;
 import fr.imie.myrh.dao.model.Departement;
 import fr.imie.myrh.web.ui.bean.DepartementForm;
 
-
+@SessionScoped
 @ManagedBean(name = "departementViewController")
 
 public class DepartementViewController implements Serializable {
@@ -47,7 +47,7 @@ public class DepartementViewController implements Serializable {
 	public void init() {
 		//log.log(Level.INFO, "hello");
 		departementItems = (List<Departement>) _departementDaoService.findAll();
-		
+		 
 	}
 
 	public List<Departement> getDepartementItems() {
@@ -66,6 +66,7 @@ public class DepartementViewController implements Serializable {
 		model.setDescription(departementform.getDescription());
 		
 		 _departementDaoService.createDepartment(model);
+			 
 		 return "success";		
 	}
 	
@@ -81,21 +82,30 @@ public class DepartementViewController implements Serializable {
 			
 	}
 	
-public DepartementForm generateFormDepartement(Long id){
+public void generateFormDepartement(Long id){
 		
-		//System.out.println(id);
-		log.log(Level.INFO, "hello "+id);
 		departement = _departementDaoService.findById(id);
 		
+		departementform.setId(id);
 		departementform.setName(departement.getName());
 		departementform.setCode(departement.getCode());
 		departementform.setDescription(departement.getDescription());
 		
-		 _departementDaoService.updateDepartment(departement);
-		 return departementform;	
-		
-			
 	}
+
+public String updateDepartement(DepartementForm departementForm){
+	
+	departement = _departementDaoService.findById(departementForm.getId());
+	
+	departement.setName(departementform.getName());
+	departement.setCode(departementform.getCode());
+	departement.setDescription(departementform.getDescription());
+	
+	 _departementDaoService.updateDepartment(departement);
+	 //FacesContext.getCurrentInstance().getViewRoot().getViewMap().remove(departementForm);
+	 
+	 return "success";		
+}
 	
 	
 	 

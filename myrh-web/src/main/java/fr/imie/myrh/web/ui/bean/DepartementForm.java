@@ -1,9 +1,17 @@
 package fr.imie.myrh.web.ui.bean;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@SessionScoped
 
 @ManagedBean( name = "departement")
-public class DepartementForm {
+public class DepartementForm implements Serializable{
+	
+	
+	private static final long serialVersionUID = 60145738014004874L;
 	
 	private Long id;
 	private String name;

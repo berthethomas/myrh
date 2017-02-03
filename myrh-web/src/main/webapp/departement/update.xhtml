@@ -10,28 +10,29 @@
 <h:head>
 	<ui:include src="/header.xhtml"></ui:include>
 </h:head>
+
 <h:body>
 	<h:form id="form">
+		
 			<h:panelGrid columns="2">
 				<p:outputLabel for="name" value="Nom du département:" />
-				<p:inputText id="name" value="#{departementViewController.generateFormDepartement().name}" required="true">
+				<p:inputText id="name" value="#{departementViewController.departementform.name}" required="true">
 				</p:inputText>
-				
-				
+
 				<p:outputLabel for="code" value="Code du département:" />
-				<p:inputText id="code" value="#{departement.code}" required="true">
+				<p:inputText id="code" value="#{departementViewController.departementform.code}" required="true">
 				</p:inputText>
-				
+
 				<p:outputLabel for="description" value="Description du département:" />
-				<p:inputText id="description" value="#{departement.description}"
+				<p:inputText id="description" value="#{departementViewController.departementform.description}"
 					required="true">
 				</p:inputText>
-				
-			
-				<p:commandButton value="Valider" id="submit" actionListener="#{departementViewController.addDepartement()}" />
+
+				<p:commandButton value="Valider" id="submit"
+					actionListener="#{departementViewController.updateDepartement(departementViewController.departementform)}" onclick="window.location.href='index.xhtml'" />
 
 			</h:panelGrid>
-		
+
 	</h:form>
 </h:body>
 </html>

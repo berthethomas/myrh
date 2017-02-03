@@ -30,14 +30,18 @@
 			<p:column headerText="Code">
 				<h:outputText value="#{dep.code}" />
 			</p:column>
+			
+			<p:column headerText="Description">
+				<h:outputText value="#{dep.description}" />
+			</p:column>
 
 			<p:column headerText="Options">
 
 	
 				<p:commandButton icon="ui-icon-pencil" title="Modifier"
-					actionListener="#{departementViewController.generateFormDepartement(dep.id)}"/>
+					actionListener="#{departementViewController.generateFormDepartement(dep.id)}" onclick="window.location.href='update.xhtml'"/>
 				<p:commandButton icon="ui-icon-trash" title="Supprimer"
-					actionListener="#{departementViewController.removeDepartement(dep.id)}" />
+					actionListener="#{departementViewController.removeDepartement(dep.id)}"/>
 				<p:button icon="ui-icon-calendar" title="Gestion des employés"></p:button>
 			</p:column>
 		</p:dataTable>
