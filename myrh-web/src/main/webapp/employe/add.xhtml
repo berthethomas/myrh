@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<ui:include src="/header.xhtml"></ui:include>
+</h:head>
+<h:body>
+	<h:form id="form">
+
+		<p:outputLabel for="name" value="Nom :" />
+		<p:inputText id="name" value="#{employe.name}" required="true"
+			label="name">
+		</p:inputText>
+
+		<p:outputLabel for="surname" value="Prénom :" />
+		<p:inputText id="surname" value="#{employe.surname}" required="true"
+			label="surname">
+		</p:inputText>
+
+		<p:outputLabel for="birthdate" value="Date de naissance :" />
+		<p:inputText id="birthdate" value="#{employe.birthdate}"
+			required="true" label="birthdate">
+		</p:inputText>
+
+		<p:outputLabel for="arrival_date" value="Date d'arrivée :" />
+		<p:inputText id="arrival_date" value="#{employe.arrival_date}"
+			required="true" label="arrival_date">
+		</p:inputText>
+
+		<p:outputLabel for="departure_date" value="Date de départ :" />
+		<p:inputText id="departure_date" value="#{employe.departure_date}"
+			required="true" label="departure_date">
+		</p:inputText>
+
+		<p:outputLabel for="salary" value="Salaire :" />
+		<p:inputText id="salary" value="#{employe.salary}" required="true"
+			label="salary">
+		</p:inputText>
+
+		<p:outputLabel for="nss" value="Numéro de sécu :" />
+		<p:inputText id="nss" value="#{employe.nss}" required="true"
+			label="nss">
+		</p:inputText>
+
+		<p:outputLabel>Département : </p:outputLabel>
+		<!-- <p:selectOneMenu id="departement" value="#{employe.departement}"
+			required="true">
+			<f:selectItems value="#{employe.departement}" var="departement"
+				itemValue="#{departement.code}" />
+		</p:selectOneMenu> -->
+
+		<p:commandButton value="Valider" id="submit"
+			actionListener="#{employeViewController.addEmploye()}" />
+
+
+	</h:form>
+</h:body>
+</html>
